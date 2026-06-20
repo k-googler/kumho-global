@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="금호글로벌 — 청정 제주를 기반으로 한 농수산물·양식·수상테마파크 기업" />
+  <title>KUMHO GLOBAL — From Jeju, to the World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+KR:wght@200;300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- Top navigation -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#top" class="nav__brand" data-cursor="link">
+        <span class="brand__mark">KUMHO</span>
+        <span class="brand__sub">GLOBAL&nbsp;／&nbsp;금호글로벌</span>
+      </a>
+      <nav class="nav__menu">
+        <a href="#philosophy" data-cursor="link"><span class="num">01</span> Philosophy</a>
+        <a href="#business" data-cursor="link"><span class="num">02</span> Business</a>
+        <a href="#process" data-cursor="link"><span class="num">03</span> Process</a>
+        <a href="#store" data-cursor="link"><span class="num">04</span> Store</a>
+        <a href="#contact" data-cursor="link"><span class="num">05</span> Contact</a>
+      </nav>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__progress" id="nav-progress"></div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__slider" id="hero-slider">
+      <div class="hero__slide is-active" data-index="0">
+        <div class="hero__media" data-zoom>
+          <img src="assets/images/hero-ocean.jpg" alt="Jeju ocean horizon" />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="hero__caption">
+          <div class="hero__index">01 / 03</div>
+          <h1 class="hero__title">
+            <span class="reveal-line"><span>Pristine&nbsp;Origin</span></span>
+            <span class="reveal-line"><span>청정한 시작, 제주.</span></span>
+          </h1>
+          <p class="hero__desc">바다·바람·현무암이 빚은 제주에서, 가장 순수한 자원이 출발합니다.</p>
+        </div>
+      </div>
+
+      <div class="hero__slide" data-index="1">
+        <div class="hero__media" data-zoom>
+          <img src="assets/images/hero-aquaculture.jpg" alt="Marine aquaculture" />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="hero__caption">
+          <div class="hero__index">02 / 03</div>
+          <h1 class="hero__title">
+            <span class="reveal-line"><span>Cultured&nbsp;Care</span></span>
+            <span class="reveal-line"><span>시간이 키운 양식.</span></span>
+          </h1>
+          <p class="hero__desc">식용어류와 관상어를 위한 정밀한 수조 시스템과 자연 친화 양식장.</p>
+        </div>
+      </div>
+
+      <div class="hero__slide" data-index="2">
+        <div class="hero__media" data-zoom>
+          <img src="assets/images/hero-themepark.jpg" alt="Water theme park" />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="hero__caption">
+          <div class="hero__index">03 / 03</div>
+          <h1 class="hero__title">
+            <span class="reveal-line"><span>Living&nbsp;Spaces</span></span>
+            <span class="reveal-line"><span>물이 만든 공간.</span></span>
+          </h1>
+          <p class="hero__desc">수상 테마파크와 인테리어 — 경험으로 완성되는 공간 디자인.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__controls">
+      <button class="hero__arrow hero__arrow--prev" id="hero-prev" aria-label="Previous">
+        <svg width="48" height="12" viewBox="0 0 48 12"><path d="M0 6 L46 6 M6 1 L1 6 L6 11" stroke="currentColor" fill="none" stroke-width="1"/></svg>
+      </button>
+      <div class="hero__dots" id="hero-dots">
+        <button class="is-active" data-go="0"><span>01</span></button>
+        <button data-go="1"><span>02</span></button>
+        <button data-go="2"><span>03</span></button>
+      </div>
+      <button class="hero__arrow hero__arrow--next" id="hero-next" aria-label="Next">
+        <svg width="48" height="12" viewBox="0 0 48 12"><path d="M2 6 L48 6 M42 1 L47 6 L42 11" stroke="currentColor" fill="none" stroke-width="1"/></svg>
+      </button>
+    </div>
+
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+
+    <div class="hero__marquee">
+      <div class="hero__marquee-track">
+        <span>KUMHO GLOBAL</span><span>·</span><span>FROM JEJU</span><span>·</span>
+        <span>KUMHO GLOBAL</span><span>·</span><span>FROM JEJU</span><span>·</span>
+        <span>KUMHO GLOBAL</span><span>·</span><span>FROM JEJU</span><span>·</span>
+        <span>KUMHO GLOBAL</span><span>·</span><span>FROM JEJU</span><span>·</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="section philosophy" id="philosophy">
+    <div class="section__grid">
+      <div class="section__label">
+        <span class="num">01</span>
+        <span>Philosophy</span>
+      </div>
+      <div class="section__content">
+        <h2 class="section__title" data-fade>
+          <span>청정한 제주의 시간은,</span>
+          <span>더 좋은 식탁과 공간을 만듭니다.</span>
+        </h2>
+        <div class="philosophy__body" data-fade>
+          <p>
+            금호글로벌은 제주도 화산섬의 현무암 해안과 맑은 바다에서 시작합니다.
+            우리는 자연이 준 자원을 가장 정직한 방식으로 가공하고,
+            더 오랜 시간 살아남을 공간으로 다시 빚습니다.
+          </p>
+          <p>
+            From sea to table. From nature to space.
+          </p>
+        </div>
+      </div>
+      <div class="philosophy__stats" data-fade>
+        <div class="stat">
+          <div class="stat__num"><span data-count="24">0</span><sup>+</sup></div>
+          <div class="stat__label">Years of<br/>Heritage</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num"><span data-count="180">0</span></div>
+          <div class="stat__label">Partner<br/>Farms</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num"><span data-count="32">0</span></div>
+          <div class="stat__label">Export<br/>Countries</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT IMAGE -->
+  <section class="section about-image">
+    <div class="about-image__wrap" data-fade>
+      <img src="assets/images/about-jeju.jpg" alt="Jeju Hallasan landscape" />
+      <div class="about-image__caption">
+        <span class="num">JEJU&nbsp;／&nbsp;KOREA</span>
+        <span>33.4996° N, 126.5312° E</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS -->
+  <section class="section business" id="business">
+    <div class="section__grid">
+      <div class="section__label">
+        <span class="num">02</span>
+        <span>Business</span>
+      </div>
+      <div class="section__content">
+        <h2 class="section__title" data-fade>
+          <span>네 개의 흐름,</span>
+          <span>하나의 가치.</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="business__list">
+      <article class="biz" data-fade>
+        <div class="biz__num">B.01</div>
+        <div class="biz__media">
+          <img src="assets/images/section-distribution.jpg" alt="Distribution" />
+        </div>
+        <div class="biz__body">
+          <div class="biz__meta">
+            <span>유통 ／ Distribution</span>
+            <span>01</span>
+          </div>
+          <h3 class="biz__title">농수산물·냉동 식자재 유통</h3>
+          <p class="biz__desc">
+            제주 산지 직송 네트워크와 글로벌 콜드체인.
+            활어,冷冻, 가공 식자재를 산지에서 식탁까지 무결점으로 전달합니다.
+          </p>
+          <ul class="biz__tags">
+            <li>활어</li><li>냉동</li><li>농산물</li><li>축산</li><li>식자재</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="biz biz--reverse" data-fade>
+        <div class="biz__num">B.02</div>
+        <div class="biz__media">
+          <img src="assets/images/section-seafood.jpg" alt="Aquaculture" />
+        </div>
+        <div class="biz__body">
+          <div class="biz__meta">
+            <span>양식 ／ Aquaculture</span>
+            <span>02</span>
+          </div>
+          <h3 class="biz__title">식용어류와 관상어 양식</h3>
+          <p class="biz__desc">
+            자연 해면과 순환 여과 시스템을 결합한 하이브리드 양식장.
+            식용은 품질, 관상어는 건강과 색을 기준으로 길러냅니다.
+          </p>
+          <ul class="biz__tags">
+            <li>광어</li><li>우럭</li><li>전어</li><li>열대어</li><li>관상어</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="biz" data-fade>
+        <div class="biz__num">B.03</div>
+        <div class="biz__media">
+          <img src="assets/images/section-ornamental.jpg" alt="Ornamental fish" />
+        </div>
+        <div class="biz__body">
+          <div class="biz__meta">
+            <span>관상어 ／ Ornamental</span>
+            <span>03</span>
+          </div>
+          <h3 class="biz__title">관상어 전시·유통 시스템</h3>
+          <p class="biz__desc">
+            아로와나, 베타, 디스커스 등 프리미엄 관상어를 위한
+            전시형 수조와 정밀 환경제어 솔루션.
+          </p>
+          <ul class="biz__tags">
+            <li>아로와나</li><li>베타</li><li>디스커스</li><li>수조 설계</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="biz biz--reverse" data-fade>
+        <div class="biz__num">B.04</div>
+        <div class="biz__media">
+          <img src="assets/images/hero-themepark.jpg" alt="Water theme park" />
+        </div>
+        <div class="biz__body">
+          <div class="biz__meta">
+            <span>공간 ／ Spaces</span>
+            <span>04</span>
+          </div>
+          <h3 class="biz__title">수상 테마파크 &amp; 인테리어</h3>
+          <p class="biz__desc">
+            물을 중심으로 한 테마파크와 실내 인테리어 설계·시공.
+            콘크리트·목재·유리의 절제된 재료 조합으로 오래 머무는 공간을 만듭니다.
+          </p>
+          <ul class="biz__tags">
+            <li>테마파크</li><li>수조 인테리어</li><li>리조트</li><li>전시 공간</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section process" id="process">
+    <div class="section__grid">
+      <div class="section__label">
+        <span class="num">03</span>
+        <span>Process</span>
+      </div>
+      <div class="section__content">
+        <h2 class="section__title" data-fade>
+          <span>바다에서 식탁까지,</span>
+          <span>네 개의 시간.</span>
+        </h2>
+      </div>
+    </div>
+
+    <ol class="process__list" data-fade>
+      <li class="process__item">
+        <div class="process__num">01</div>
+        <div class="process__name">Source<br/><span>산지</span></div>
+        <div class="process__desc">제주 산지와 계약 양식장에서 원료를 직접 검증합니다.</div>
+      </li>
+      <li class="process__item">
+        <div class="process__num">02</div>
+        <div class="process__name">Cultivate<br/><span>양성·숙성</span></div>
+        <div class="process__desc">정밀 환경제어 수조와 자연 해면에서 충분한 시간을 들여 기릅니다.</div>
+      </li>
+      <li class="process__item">
+        <div class="process__num">03</div>
+        <div class="process__name">Process<br/><span>가공·포장</span></div>
+        <div class="process__desc">위생 등급 시설에서 즉시 가공, 진공·냉동 포장으로 신선도를 잠급니다.</div>
+      </li>
+      <li class="process__item">
+        <div class="process__num">04</div>
+        <div class="process__name">Deliver<br/><span>유통·배송</span></div>
+        <div class="process__desc">국내외 콜드체인 네트워크로 식당·자사몰·수출처까지 전달합니다.</div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- FARM AERIAL -->
+  <section class="section aerial" data-fade>
+    <div class="aerial__wrap">
+      <img src="assets/images/section-farm-aerial.jpg" alt="Aquaculture aerial view" />
+      <div class="aerial__caption">
+        <span class="num">／ 05</span>
+        <h3>From Sea to Space.</h3>
+        <p>우리는 자원을 가공하는 것에 그치지 않고,<br/>그 자원으로 더 좋은 공간을 만듭니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORE -->
+  <section class="section store" id="store">
+    <div class="section__grid">
+      <div class="section__label">
+        <span class="num">04</span>
+        <span>Store</span>
+      </div>
+      <div class="section__content">
+        <h2 class="section__title" data-fade>
+          <span>금호 스토어.</span>
+          <span>산지가 가장 빠른 길로.</span>
+        </h2>
+        <p class="section__lede" data-fade>
+          금호글로벌이 직접 기르고 검증한 농수산물과 관상어.
+          중간 유통 없이, 가장 신선한 상태로 만나는 자사몰.
+        </p>
+      </div>
+    </div>
+
+    <div class="store__grid" data-fade>
+      <a class="product" href="#" data-cursor="view">
+        <div class="product__media"><img src="assets/images/store-citrus.jpg" alt="Hallabong citrus" /></div>
+        <div class="product__meta">
+          <span class="product__cat">F&nbsp;／&nbsp;Fruit</span>
+          <span class="product__id">P—01</span>
+        </div>
+        <h4 class="product__name">한라봉 · Hallabong</h4>
+        <div class="product__price">₩&nbsp;32,000 / 3kg</div>
+      </a>
+      <a class="product" href="#" data-cursor="view">
+        <div class="product__media"><img src="assets/images/store-abalone.jpg" alt="Abalone" /></div>
+        <div class="product__meta">
+          <span class="product__cat">S&nbsp;／&nbsp;Seafood</span>
+          <span class="product__id">P—02</span>
+        </div>
+        <h4 class="product__name">제주 활전복 · Live Abalone</h4>
+        <div class="product__price">₩&nbsp;48,000 / 5pcs</div>
+      </a>
+      <a class="product" href="#" data-cursor="view">
+        <div class="product__media"><img src="assets/images/store-fish.jpg" alt="Ornamental fish" /></div>
+        <div class="product__meta">
+          <span class="product__cat">L&nbsp;／&nbsp;Living</span>
+          <span class="product__id">P—03</span>
+        </div>
+        <h4 class="product__name">아시아 아로와나 · Arowana</h4>
+        <div class="product__price">문의 · Inquiry</div>
+      </a>
+      <a class="product" href="#" data-cursor="view">
+        <div class="product__media"><img src="assets/images/section-seafood.jpg" alt="Sea urchin" /></div>
+        <div class="product__meta">
+          <span class="product__cat">S&nbsp;／&nbsp;Seafood</span>
+          <span class="product__id">P—04</span>
+        </div>
+        <h4 class="product__name">제주 성게 · Sea Urchin</h4>
+        <div class="product__price">₩&nbsp;28,000 / 100g</div>
+      </a>
+    </div>
+
+    <div class="store__cta" data-fade>
+      <a href="#" class="cta">
+        <span>Visit the Store</span>
+        <svg width="48" height="12" viewBox="0 0 48 12"><path d="M2 6 L48 6 M42 1 L47 6 L42 11" stroke="currentColor" fill="none" stroke-width="1"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="section__grid">
+      <div class="section__label">
+        <span class="num">05</span>
+        <span>Contact</span>
+      </div>
+      <div class="section__content contact__main" data-fade>
+        <h2 class="contact__h">
+          <span>제주에서,</span>
+          <span>당신의 식탁과 공간까지.</span>
+        </h2>
+        <div class="contact__cols">
+          <div class="contact__col">
+            <span class="contact__lbl">Headquarters</span>
+            <p>제주특별자치도 제주시<br/>애월해안로 000, 금호빌딩</p>
+          </div>
+          <div class="contact__col">
+            <span class="contact__lbl">Channels</span>
+            <p>T&nbsp;&nbsp;+82&nbsp;64&nbsp;000&nbsp;0000<br/>E&nbsp;&nbsp;hello@kumho-global.com</p>
+          </div>
+          <div class="contact__col">
+            <span class="contact__lbl">B2B · Export</span>
+            <p>글로벌 유통·수출 및<br/>테마파크 컨설팅 문의</p>
+          </div>
+          <div class="contact__col">
+            <span class="contact__lbl">Press</span>
+            <p>미디어·제휴·IR 관련<br/>press@kumho-global.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="brand__mark big">KUMHO</span>
+        <span class="brand__sub">GLOBAL&nbsp;／&nbsp;금호글로벌</span>
+      </div>
+      <div class="footer__marquee">
+        <div class="footer__marquee-track">
+          <span>FROM JEJU</span><span>·</span>
+          <span>FROM JEJU</span><span>·</span>
+          <span>FROM JEJU</span><span>·</span>
+          <span>FROM JEJU</span><span>·</span>
+          <span>FROM JEJU</span><span>·</span>
+          <span>FROM JEJU</span><span>·</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Kumho Global Co., Ltd.</span>
+      <span>All rights reserved.</span>
+      <span>v 1.0 · Made in Jeju</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Temp / trash files from AI generation
+matrix-media-*.png
+*.py
+*.json
+!package*.json
+
+# Backup files
+*.bak
+
+# Build / node
+node_modules/
+dist/
