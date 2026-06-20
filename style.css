@@ -773,6 +773,273 @@ body.cursor-link .cursor-follower { width: 60px; height: 60px; }
   .aerial__caption { left: 24px; bottom: 32px; }
 }
 
+/* ---------- Network (Korea map) ---------- */
+.network {
+  padding: 0 var(--side);
+  position: relative;
+}
+.network__map-wrap {
+  max-width: var(--container);
+  margin: 80px auto 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 1100px) {
+  .network__map-wrap {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.network__map-bg {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(31,58,74,0.04) 0%, transparent 70%),
+    var(--paper);
+  border: 1px solid var(--line);
+  padding: 32px;
+}
+.network__map-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(31,58,74,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31,58,74,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0;
+  pointer-events: none;
+  opacity: .6;
+  z-index: 0;
+}
+.network__map {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 620px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* Korea land mass */
+.network__land {
+  fill: rgba(31, 58, 74, 0.08);
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 6;
+  transition: fill .6s var(--ease);
+}
+.network__land--small {
+  fill: rgba(31, 58, 74, 0.05);
+  stroke-width: 1;
+}
+
+/* Animated connection lines */
+.network__line {
+  stroke: var(--accent);
+  stroke-opacity: .35;
+  stroke-dasharray: 6 6;
+  stroke-dashoffset: 0;
+  animation: dashflow 4s linear infinite;
+}
+.network__line:nth-child(odd) { animation-duration: 4.5s; }
+.network__line:nth-child(2n)  { animation-duration: 5.5s; animation-direction: reverse; }
+.network__line--primary {
+  stroke-opacity: .85;
+  stroke-width: 2;
+  stroke-dasharray: none;
+  animation: none;
+}
+@keyframes dashflow {
+  to { stroke-dashoffset: -120; }
+}
+
+/* Sea wave decoration between Jeju and peninsula */
+.network__wave path {
+  stroke-dasharray: 4 4;
+  animation: dashflow 6s linear infinite;
+}
+.network__wave path:nth-child(2n) { animation-direction: reverse; }
+
+/* Node base */
+.network__node { cursor: default; }
+.network__dot {
+  fill: var(--ink);
+  stroke: var(--paper);
+  stroke-width: 2;
+  transition: r .3s var(--ease), fill .3s var(--ease);
+}
+.network__halo {
+  fill: var(--accent);
+  fill-opacity: 0;
+  stroke: var(--accent);
+  stroke-width: 1;
+  stroke-opacity: .25;
+  transition: fill-opacity .3s var(--ease), stroke-opacity .3s var(--ease);
+}
+.network__node:hover .network__halo {
+  fill-opacity: .08;
+  stroke-opacity: .6;
+}
+.network__node:hover .network__dot {
+  r: 7;
+}
+
+/* HQ node accent */
+.network__node[data-type="hq"] .network__dot { fill: var(--accent); }
+.network__node[data-type="hq"] .network__halo { stroke: var(--accent); stroke-opacity: .35; }
+
+/* Plant node color */
+.network__node[data-type="plant"] .network__dot { fill: var(--wood-2); }
+.network__node[data-type="plant"] .network__halo { stroke: var(--wood-2); }
+
+/* Market node */
+.network__node[data-type="market"] .network__dot { fill: var(--ink); }
+
+/* Partner (Nonghyup) node */
+.network__node[data-type="partner"] .network__dot { fill: var(--muted-2); }
+.network__node[data-type="partner"] .network__halo { stroke: var(--muted-2); }
+
+/* Pulse on HQ */
+.network__pulse {
+  fill: var(--accent);
+  fill-opacity: 0;
+  transform-origin: center;
+  animation: pulse 2.6s ease-out infinite;
+}
+@keyframes pulse {
+  0%   { fill-opacity: .55; r: 4; }
+  100% { fill-opacity: 0;  r: 22; }
+}
+
+/* Labels */
+.network__label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--paper);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+.network__sub {
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  fill: var(--muted);
+  paint-order: stroke;
+  stroke: var(--paper);
+  stroke-width: 3;
+  text-transform: uppercase;
+}
+
+/* Legend */
+.network__legend {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  align-self: start;
+  position: sticky;
+  top: 120px;
+}
+.network__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-family: var(--f-kr);
+  font-weight: 300;
+  color: var(--ink-2);
+  letter-spacing: 0.02em;
+}
+.network__legend-item .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1.5px solid var(--paper);
+  box-shadow: 0 0 0 1px currentColor;
+}
+.dot--hq     { background: var(--accent);   color: var(--accent); }
+.dot--plant  { background: var(--wood-2);   color: var(--wood-2); }
+.dot--market { background: var(--ink);      color: var(--ink); }
+.dot--partner{ background: var(--muted-2);  color: var(--muted-2); }
+
+@media (max-width: 1100px) {
+  .network__legend {
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: static;
+    padding: 18px 20px;
+  }
+  .network__legend-item { font-size: 11px; }
+}
+
+/* Network stats */
+.network__stats {
+  max-width: var(--container);
+  margin: 80px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.network__stat {
+  padding: 40px 24px;
+  border-right: 1px solid var(--line);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.network__stat:last-child { border-right: 0; }
+.network__stat-num {
+  font-size: clamp(40px, 4.4vw, 64px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--accent);
+  font-feature-settings: "tnum";
+}
+.network__stat-num sup {
+  font-size: 0.5em;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 4px;
+  vertical-align: top;
+  top: 0.4em;
+  position: relative;
+}
+.network__stat-lbl {
+  font-family: var(--f-kr);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+@media (max-width: 900px) {
+  .network__stats { grid-template-columns: repeat(2, 1fr); }
+  .network__stat:nth-child(2) { border-right: 0; }
+  .network__stat:nth-child(1), .network__stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 500px) {
+  .network__stats { grid-template-columns: 1fr; }
+  .network__stat { border-right: 0; border-bottom: 1px solid var(--line); }
+  .network__stat:last-child { border-bottom: 0; }
+}
+
 /* ---------- Store ---------- */
 .store__grid {
   max-width: var(--container);
@@ -870,16 +1137,16 @@ body.cursor-link .cursor-follower { width: 60px; height: 60px; }
 }
 .contact__cols {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 32px;
   border-top: 1px solid var(--line);
   padding-top: 40px;
 }
-@media (max-width: 900px) {
-  .contact__cols { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 1100px) {
+  .contact__cols { grid-template-columns: repeat(3, 1fr); }
 }
-@media (max-width: 600px) {
-  .contact__cols { grid-template-columns: 1fr; }
+@media (max-width: 700px) {
+  .contact__cols { grid-template-columns: repeat(2, 1fr); }
 }
 .contact__col {
   display: flex;
@@ -958,7 +1225,7 @@ body.cursor-link .cursor-follower { width: 60px; height: 60px; }
 }
 [data-fade].is-in {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
 }
 [data-fade]:nth-child(2) { transition-delay: .12s; }
 [data-fade]:nth-child(3) { transition-delay: .24s; }

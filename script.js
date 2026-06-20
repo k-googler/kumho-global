@@ -189,4 +189,42 @@
       el.classList.add('is-in');
     });
   });
+
+  /* ---------- Network: draw-in on view ---------- */
+  const netWrap = document.querySelector('.network__map-wrap');
+  if (netWrap && 'IntersectionObserver' in window) {
+    netWrap.querySelectorAll('.network__line').forEach(p => {
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = `${len}`;
+      p.style.strokeDashoffset = `${len}`;
+      p.style.transition = 'stroke-dashoffset 1.6s var(--ease-out, cubic-bezier(0.16,1,0.3,1))';
+      p.style.animation = 'none';
+    });
+    // Use opacity-only fade-in to avoid clobbering SVG `transform="translate(...)"`
+    netWrap.querySelectorAll('.network__node').forEach(n => {
+      n.style.opacity = '0';
+      n.style.transition = 'opacity .8s var(--ease-out, ease)';
+    });
+    const netIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const lines = e.target.querySelectorAll('.network__line');
+        lines.forEach((l, i) => {
+          setTimeout(() => {
+            l.style.strokeDashoffset = '0';
+            // resume CSS dashflow animation after draw-in
+            l.style.strokeDasharray = '6 6';
+            l.style.strokeDashoffset = '0';
+            l.style.animation = '';
+          }, 200 + i * 140);
+        });
+        const nodes = e.target.querySelectorAll('.network__node');
+        nodes.forEach((n, i) => {
+          setTimeout(() => { n.style.opacity = '1'; }, 800 + i * 120);
+        });
+        netIO.unobserve(e.target);
+      });
+    }, { threshold: 0.25 });
+    netIO.observe(netWrap);
+  }
 })();
