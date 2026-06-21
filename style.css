@@ -838,6 +838,30 @@ body.cursor-link .cursor-follower { width: 60px; height: 60px; }
   stroke-width: 1;
 }
 
+/* 3D extruded Korea landmass — side (depth) face is a darker, no-stroke copy offset down-right */
+.network__korea-side path,
+.network__korea-side ellipse {
+  fill: rgba(31, 58, 74, 0.42);
+  stroke: none;
+  transition: fill .6s var(--ease);
+}
+
+/* Top face overrides .network__land fill so it cleanly covers the depth face */
+.network__korea-top path,
+.network__korea-top ellipse {
+  fill: rgba(255, 255, 255, 0.78);
+}
+
+/* Province boundary lines on top of the 3D map */
+.network__provinces {
+  fill: none;
+  stroke: rgba(31, 58, 74, 0.55);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
 /* Animated connection lines */
 .network__line {
   stroke: var(--accent);

@@ -326,7 +326,7 @@
     <div class="network__map-wrap" data-fade>
       <div class="network__map-bg">
         <svg class="network__map" viewBox="260 80 480 580" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="대한민국 유통 네트워크 지도">
-          <!-- Marker definitions for arrowheads on flow lines -->
+          <!-- Marker definitions + soft drop shadow for 3D extruded Korea landmass -->
           <defs>
             <marker id="arrow-head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(31, 58, 74, 0.7)" />
@@ -334,48 +334,37 @@
             <marker id="arrow-head-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f3a4a" />
             </marker>
+            <filter id="map-shadow" x="-15%" y="-15%" width="130%" height="130%">
+              <feDropShadow dx="3" dy="6" stdDeviation="4.5" flood-color="#1f3a4a" flood-opacity="0.14" />
+            </filter>
           </defs>
 
-          <!-- v8: Extreme angular Korea — pronounced Busan SE (x=680), Yeosu SE, Taean headland, deep Gyeonggi Bay indent; long vertical Gangwon E coast -->
-          <path class="network__land" d="
-            M 470 75
-            L 495 70
-            L 520 75
-            L 545 105
-            L 568 155
-            L 585 210
-            L 600 270
-            L 615 330
-            L 625 385
-            L 640 410
-            L 680 435
-            L 645 460
-            L 615 475
-            L 580 478
-            L 540 478
-            L 510 475
-            L 480 490
-            L 445 498
-            L 415 485
-            L 388 465
-            L 365 442
-            L 358 415
-            L 365 385
-            L 348 355
-            L 372 325
-            L 358 295
-            L 372 265
-            L 388 235
-            L 412 205
-            L 432 175
-            L 448 145
-            L 460 110
-            L 470 75
-            Z
-          " />
+          <!-- v9: 3D extruded Korea landmass — light top face, darker depth face (translated down-right), soft drop shadow, stylized province boundary lines. Same v8 outline + Jeju main ellipse as base shape. -->
+          <g class="network__korea" filter="url(#map-shadow)">
+            <!-- Side / depth face (offset down-right; no stroke) -->
+            <g class="network__korea-side" transform="translate(2, 10)">
+              <path d="M 470 75 L 495 70 L 520 75 L 545 105 L 568 155 L 585 210 L 600 270 L 615 330 L 625 385 L 640 410 L 680 435 L 645 460 L 615 475 L 580 478 L 540 478 L 510 475 L 480 490 L 445 498 L 415 485 L 388 465 L 365 442 L 358 415 L 365 385 L 348 355 L 372 325 L 358 295 L 372 265 L 388 235 L 412 205 L 432 175 L 448 145 L 460 110 L 470 75 Z" />
+              <ellipse cx="415" cy="595" rx="80" ry="30" />
+            </g>
 
-          <!-- Jeju island — directly south of Wando -->
-          <ellipse class="network__land" cx="415" cy="595" rx="80" ry="30" />
+            <!-- Top face (original position; inherits .network__land styling) -->
+            <g class="network__korea-top">
+              <path class="network__land" d="M 470 75 L 495 70 L 520 75 L 545 105 L 568 155 L 585 210 L 600 270 L 615 330 L 625 385 L 640 410 L 680 435 L 645 460 L 615 475 L 580 478 L 540 478 L 510 475 L 480 490 L 445 498 L 415 485 L 388 465 L 365 442 L 358 415 L 365 385 L 348 355 L 372 325 L 358 295 L 372 265 L 388 235 L 412 205 L 432 175 L 448 145 L 460 110 L 470 75 Z" />
+              <ellipse class="network__land" cx="415" cy="595" rx="80" ry="30" />
+            </g>
+
+            <!-- Stylized province boundary lines on top face -->
+            <g class="network__provinces">
+              <path d="M 455 145 L 555 145" />
+              <path d="M 420 215 L 580 215" />
+              <path d="M 550 170 L 565 260" />
+              <path d="M 385 290 L 590 290" />
+              <path d="M 380 370 L 605 370" />
+              <path d="M 435 295 L 435 470" />
+            </g>
+          </g>
+
+          <!-- Jeju satellite islands (small, on top face; stay 2D) -->
           <ellipse class="network__land network__land--small" cx="335" cy="610" rx="11" ry="6" />
           <ellipse class="network__land network__land--small" cx="495" cy="608" rx="13" ry="7" />
           <ellipse class="network__land network__land--small" cx="420" cy="640" rx="7" ry="4" />
